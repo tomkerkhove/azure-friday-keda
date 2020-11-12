@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  azure.friday.orders:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SERVICEBUS_NAMESPACE_CONNECTIONSTRING=<connection-string>
+      - SERVICEBUS_QUEUE_ORDERS=orders
+      - SERVICEBUS_QUEUE_SHIPMENTS=shipments

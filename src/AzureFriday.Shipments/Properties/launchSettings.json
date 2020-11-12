@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "AzureFriday.Shipments": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 34948,
+      "useSSL": false
+    }
+  }
+}

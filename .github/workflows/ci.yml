@@ -15,12 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    - name: Build Docker image
       run: docker build ./src/ --file ./src/AzureFriday.Orders/Dockerfile
   shipments:
     name: Shipments (Docker)
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build ./src/ --file ./src/AzureFriday.Orders/Dockerfile
+    - name: Build Docker image
+      run: docker build ./src/ --file ./src/AzureFriday.Shipments/Dockerfile
