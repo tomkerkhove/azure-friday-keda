@@ -4,6 +4,14 @@ Demo used in Azure Friday on Azure Serverless on Kubernetes with KEDA episode.
 
 ![Azure Friday](./media/azure-friday-logo.png)
 
+## Scenario
+
+We have an application that processes orders from a queue and schedules a shipment for every order.
+
+![Scenario](./media/scenario.png)
+
+To coop with the load, KEDA is used to automatically scale out/in based on the current workload and to optimize for cost.
+
 ## How to run the demo
 
 **Prerequisites**
