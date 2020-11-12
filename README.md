@@ -11,8 +11,8 @@ Demo used in Azure Friday on Azure Serverless on Kubernetes with KEDA episode.
 - Install KEDA in your Kubernetes cluster ([info](https://keda.sh/docs/2.0/deploy/))
 
 **Deploying the Azure Friday application**
-1. Provide base64 encoded secrets in `deploy\deploy-app.yml` with your Service Bus connection strings for our app
-2. Deploy the application with `kubectl apply -f deploy\deploy-app.yml`
+- Provide base64 encoded secrets in `deploy\deploy-app.yml` with your Service Bus connection strings for our app
+- Deploy the application with `kubectl apply -f deploy\deploy-app.yml`
 
 **Autoscaling our .NET Core Orders worker**
 - Provide base64 encoded secrets in `deploy\deploy-autoscaling-orders.yml` with your Service Bus connection strings for our autoscaling
