@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-friday-orders
+  labels:
+    app: azure-friday-orders
+spec:
+  selector:
+    matchLabels:
+      app: azure-friday-orders
+  template:
+    metadata:
+      labels:
+        app: azure-friday-orders
+    spec:
+      containers:
+      - name: azure-friday-orders
+        image: ghcr.io/tomkerkhove/azure-friday-orders
+        env:
+        - name: SERVICEBUS_QUEUE_ORDERS
+          value: orders
+        - name: SERVICEBUS_QUEUE_SHIPMENTS
+          value: shipments
+        - name: SERVICEBUS_NAMESPACE_CONNECTIONSTRING
+          valueFrom:
+            secretKeyRef:
+             name: secrets-azure-friday-orders
+             key: servicebus-namespace-connectionstring
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-friday-shipments
+  labels:
+    app: azure-friday-shipments
+spec:
+  selector:
+    matchLabels:
+      app: azure-friday-shipments
+  template:
+    metadata:
+      labels:
+        app: azure-friday-shipments
+    spec:
+      containers:
+      - name: azure-friday-shipments
+        image: ghcr.io/tomkerkhove/azure-friday-shipments
+        env:
+        - name: SERVICEBUS_NAMESPACE_CONNECTIONSTRING
+          valueFrom:
+            secretKeyRef:
+             name: secrets-azure-friday-shipments
+             key: servicebus-namespace-connectionstring
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secrets-azure-friday-orders
+  labels:
+    app: azure-friday
+data:
+  servicebus-namespace-connectionstring: <base64-encoded-connection-string-with-send-listen-permissions>
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secrets-azure-friday-shipments
+  labels:
+    app: azure-friday
+data:
+  servicebus-namespace-connectionstring: <base64-encoded-connection-string-with-listen-permissions>
