@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  azure.friday.orders:
+    image:  tomkerkhove/azure-friday-orders
+    build:
+      context: .
+      dockerfile: AzureFriday.Orders/Dockerfile
